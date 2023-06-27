@@ -3,46 +3,45 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bmoudach <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: bmoudach <bmoudach@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/22 16:59:48 by bmoudach          #+#    #+#              #
-#    Updated: 2023/06/16 13:17:01 by bmoudach         ###   ########.fr        #
+#    Created: 2023/05/18 15:41:57 by soutin            #+#    #+#              #
+#    Updated: 2023/06/27 03:16:47 by bmoudach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS_DIR	=	srcs
-OBJS_DIR	=	objs
+SRC_DIR		:=		src
+OBJ_DIR		:=		obj
+LIBFT_DIR	=		libft
 
-NAME		=	libft.a
-SRCS		:=	$(wildcard $(SRCS_DIR)/*.c)
-OBJS		:=	$(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
+NAME		=		push_swap
+SRC			=		$(wildcard $(SRC_DIR)/*.c)
+OBJ			=		$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+LIBFT		=		libft/libft.a
 
-CFLAGS		=	-Wall -Wextra -Werror -I./include
-CC		= 	gcc
+CPPFLAGS	=		-I./include -I./libft/include
+CFLAGS		=		-Wall -Werror -Werror -g3
 
-$(NAME):		$(OBJS)
-	$(MAKE) -C libft
-	@mv libft/libft.a $(NAME)
-	ar rcs $(NAME) $(OBJS)
+$(NAME):			$(OBJ) 
+						$(MAKE) -C $(LIBFT_DIR)
+						$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJ) -o $(NAME) $(LIBFT)
 
-$(OBJS_DIR):
-	mkdir -p $@
+$(OBJ_DIR):
+					mkdir -p $@
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c | $(OBJS_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
-all:		$(NAME)
+all:				$(NAME)
 
 clean:
-	rm -rf $(OBJS_DIR)
-	$(MAKE) clean -C libft
+					rm -rf $(OBJ_DIR)
+					$(MAKE) clean -C $(LIBFT_DIR)
 
-fclean:		clean
-	$(RM) $(NAME)
+fclean:				clean
+						rm -f $(NAME)
+						$(MAKE) fclean -C $(LIBFT_DIR)
 
-re:			fclean $(NAME)
+re:					fclean all
 
-.PHONY:		all clean fclean re
-
-
-
+.PHONY:				all clean fclean re
