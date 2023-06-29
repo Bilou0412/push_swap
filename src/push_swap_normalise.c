@@ -6,7 +6,7 @@
 /*   By: bmoudach <bmoudach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 20:25:01 by bmoudach          #+#    #+#             */
-/*   Updated: 2023/06/27 03:02:03 by bmoudach         ###   ########.fr       */
+/*   Updated: 2023/06/27 23:02:55 by bmoudach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	init_index(t_stake **pile)
 
 void	normalise(t_stake **pile)
 {
-	t_stake *tmp;
-	t_stake *tmp_buf;
+	t_stake	*tmp;
+	t_stake	*tmp_buf;
 
 	init_index(pile);
 	tmp = *pile;

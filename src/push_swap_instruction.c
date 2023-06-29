@@ -6,7 +6,7 @@
 /*   By: bmoudach <bmoudach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:20:45 by bmoudach          #+#    #+#             */
-/*   Updated: 2023/06/27 02:43:45 by bmoudach         ###   ########.fr       */
+/*   Updated: 2023/06/27 23:07:13 by bmoudach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,7 @@ void	reverse_rotate(t_stake **pile)
 	buf = *pile;
 	tmp_prelast = *pile;
 	tmp_last = ft_lstlast_ps(*pile);
-	while (buf->next)
-	{
-		buf = buf->next;
-		size++;
-	}
+	size = ft_lstsize_ps(pile);
 	while (size > 1)
 	{
 		tmp_prelast = tmp_prelast->next;

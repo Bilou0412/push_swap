@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmoudach <bmoudach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 11:09:59 by bmoudach          #+#    #+#             */
-/*   Updated: 2023/06/21 20:15:19by bmoudach         ###   ########.fr       */
+/*   Created: 2023/06/27 23:04:53 by bmoudach          #+#    #+#             */
+/*   Updated: 2023/06/29 03:17:21 by bmoudach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int		check_double(t_stake **pile_a);
+int	check_double(t_stake **pile_a);
 
 int	check_argument(char **arg, t_stake **pile_a)
 {
@@ -60,39 +60,6 @@ int	check_double(t_stake **pile_a)
 	return (1);
 }
 
-void	display(t_stake **pile_a, t_stake **pile_b)
-{
-	t_stake	*current_a;
-	t_stake	*current_b;
-
-	current_a = *pile_a;
-	if (current_a == NULL)
-	{
-		printf("pile a : NULL\n");
-		return ;
-	}
-	printf("pile a:\n");
-	while (current_a != NULL)
-	{
-		printf("%d", current_a->index);
-		printf("\n");
-		current_a = current_a->next;
-	}
-	current_b = *pile_b;
-	if (current_b == NULL)
-	{
-		printf("pile b : NULL\n");
-		return ;
-	}
-	printf("pile b:\n");
-	while (current_b != NULL)
-	{
-		printf("%d", current_b->index);
-		printf("\n");
-		current_b = current_b->next;
-	}
-}
-
 int	main(int argc, char *argv[])
 {
 	t_stake	*pile_a;
@@ -103,7 +70,7 @@ int	main(int argc, char *argv[])
 	pile_a = NULL;
 	if (argc < 2)
 		return (0);
-	if (argc > 2)
+	if (argc >= 2)
 	{
 		if (!check_argument(argv, &pile_a))
 			return (0);
@@ -112,5 +79,10 @@ int	main(int argc, char *argv[])
 	if (is_sort(&pile_a))
 		return (0);
 	max_bits = max_bit(argc - 2);
-	sort_pile(&pile_a, &pile_b, max_bits);
+	if (argc < 5)
+		sort_three(&pile_a);
+	else if (argc < 7)
+		sort_five(&pile_a, &pile_b);
+	else
+		sort_pile(&pile_a, &pile_b, max_bits);
 }

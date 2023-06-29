@@ -6,12 +6,12 @@
 /*   By: bmoudach <bmoudach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 18:10:11 by bmoudach          #+#    #+#             */
-/*   Updated: 2023/06/24 15:29:20 by bmoudach         ###   ########.fr       */
+/*   Updated: 2023/06/27 23:05:08 by bmoudach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../include/push_swap.h"
-#include"../libft/libft.h"
+#include "../include/push_swap.h"
+#include "../libft/libft.h"
 
 t_stake	*ft_lstnew_ps(int content)
 {
@@ -27,14 +27,14 @@ t_stake	*ft_lstnew_ps(int content)
 
 int	ft_lstsize_ps(t_stake **pile)
 {
-	t_stake *tmp;
-	int	i;
-	
+	t_stake	*tmp;
+	int		i;
+
 	i = 0;
 	tmp = *pile;
-	while(tmp)
+	while (tmp)
 	{
-		tmp=tmp->next;
+		tmp = tmp->next;
 		i++;
 	}
 	return (i);
@@ -59,9 +59,9 @@ void	ft_lstadd_back_ps(t_stake **lst, t_stake *new)
 
 t_stake	*ft_atoi_ps(const char *str, int *error)
 {
-	int					i;
-	int					signe;
-	long long			base;
+	int			i;
+	int			signe;
+	long long	base;
 
 	base = 0;
 	signe = 1;
