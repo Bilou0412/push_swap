@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmoudach <bmoudach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 17:49:13 by bmoudach          #+#    #+#             */
-/*   Updated: 2023/06/29 04:31:19 by bmoudach         ###   ########.fr       */
+/*   Created: 2023/06/29 05:18:27 by bmoudach          #+#    #+#             */
+/*   Updated: 2023/06/29 05:18:33 by bmoudach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ void	sort_three(t_stake **pile_a)
 	t_stake	*tmp;
 
 	tmp = *pile_a;
-	if (tmp->index == 2 && tmp->next->index == 1 && tmp->next->next->index == 0)
+	if (tmp->index > tmp->next->index
+		&& tmp->next->next->index < tmp->next->index)
 	{
 		sa(pile_a);
 		ra(pile_a);
@@ -95,9 +96,12 @@ void	sort_three(t_stake **pile_a)
 	while (!is_sort(pile_a))
 	{
 		tmp = *pile_a;
-		if (tmp->index != 0)
+		if (tmp->index > tmp->next->index
+			|| tmp->index > tmp->next->next->index)
 			ra(pile_a);
-		else if (tmp->index == 0 && tmp->next->index == 2 && !is_sort(pile_a))
+		else if (tmp->index < tmp->next->index
+			&& tmp->index < tmp->next->next->index
+			&& tmp->next->index > tmp->next->next->index && !is_sort(pile_a))
 		{
 			sa(pile_a);
 			while (!is_sort(pile_a))
@@ -115,26 +119,14 @@ void	sort_five(t_stake **pile_a, t_stake **pile_b)
 	while (ft_lstsize_ps(pile_b) < 2)
 	{
 		tmp_a = *pile_a;
-		if (tmp_a->index != ft_lstsize_ps(pile_a) - 1)
+		if (tmp_a->index != 0 && tmp_a->index != 1)
 			ra(pile_a);
 		else
 			pb(pile_a, pile_b);
 	}
-	while (!is_sort(pile_a))
-	{
-		tmp_a = *pile_a;
-		if ((tmp_a->index > tmp_a->next->index)
-			&& tmp_a->index > ft_lstlast_ps(*pile_a)->index)
-			ra(pile_a);
-		else
-		{
-			sa(pile_a);
-			while (!is_sort(pile_a))
-				ra(pile_a);
-		}
-	}
-	while(is_sort(pile_b))
+	sort_three(pile_a);
+	while (is_sort(pile_b))
 		rb(pile_b);
-	while(ft_lstsize_ps(pile_b))
+	while (ft_lstsize_ps(pile_b))
 		pa(pile_b, pile_a);
 }
