@@ -6,7 +6,7 @@
 /*   By: bmoudach <bmoudach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:39:36 by bmoudach          #+#    #+#             */
-/*   Updated: 2023/06/29 05:17:02 by bmoudach         ###   ########.fr       */
+/*   Updated: 2023/06/30 14:28:43 by bmoudach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int					max_bit(int nb);
 int					is_sort(t_stake **pile);
 void				sort_three(t_stake **pile_a);
 void				sort_five(t_stake **pile_a, t_stake **pile_b);
+void				ft_lstclear_ps(t_stake **lst);
 
 #endif

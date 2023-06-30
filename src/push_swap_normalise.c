@@ -6,7 +6,7 @@
 /*   By: bmoudach <bmoudach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 20:25:01 by bmoudach          #+#    #+#             */
-/*   Updated: 2023/06/27 23:02:55 by bmoudach         ###   ########.fr       */
+/*   Updated: 2023/06/30 14:34:32 by bmoudach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,28 @@ void	normalise(t_stake **pile)
 		tmp_buf = *pile;
 		tmp = tmp->next;
 	}
+}
+
+void	ft_lstdelone_ps(t_stake *lst)
+{
+	if (!lst)
+		return ;
+	free(lst);
+}
+
+void	ft_lstclear_ps(t_stake **lst)
+{
+	t_stake	*t;
+	t_stake	*buf;
+
+	if (!lst)
+		return ;
+	t = *lst;
+	while (t)
+	{
+		buf = t->next;
+		ft_lstdelone_ps(t);
+		t = buf;
+	}
+	*lst = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: bmoudach <bmoudach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 05:18:27 by bmoudach          #+#    #+#             */
-/*   Updated: 2023/06/29 05:18:33 by bmoudach         ###   ########.fr       */
+/*   Updated: 2023/06/30 14:37:36 by bmoudach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,9 @@ void	sort_pile(t_stake **pile_a, t_stake **pile_b, int bit_max)
 		{
 			tmp = *pile_a;
 			if (((tmp->index >> bit_rank) & 1) == 0 && !is_sort(pile_a))
-			{
 				pb(pile_a, pile_b);
-			}
 			else if (!is_sort(pile_a))
-			{
 				ra(pile_a);
-			}
 		}
 		bit_rank++;
 		sort_pile_b(bit_rank, bit_max, pile_b, pile_a);

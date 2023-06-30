@@ -6,7 +6,7 @@
 /*   By: bmoudach <bmoudach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 23:04:53 by bmoudach          #+#    #+#             */
-/*   Updated: 2023/06/29 05:14:49 by bmoudach         ###   ########.fr       */
+/*   Updated: 2023/06/30 14:40:15 by bmoudach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ int	main(int argc, char *argv[])
 	if (argc >= 2)
 	{
 		if (!check_argument(argv, &pile_a))
-			return (0);
+			return (ft_lstclear_ps(&pile_a), 0);
 	}
 	normalise(&pile_a);
 	if (is_sort(&pile_a))
-		return (0);
+		return (ft_lstclear_ps(&pile_a), 0);
 	max_bits = max_bit(argc - 2);
 	if (argc == 4)
 		sort_three(&pile_a);
@@ -85,4 +85,6 @@ int	main(int argc, char *argv[])
 		sort_five(&pile_a, &pile_b);
 	else
 		sort_pile(&pile_a, &pile_b, max_bits);
+	ft_lstclear_ps(&pile_a);
+	ft_lstclear_ps(&pile_b);
 }
